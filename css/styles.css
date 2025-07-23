@@ -4065,21 +4065,53 @@ img.u-pull-left {
     flex-direction: column;
 }
 .con {
-  border: 2px solid transparent;
+  position: relative; /* ضروري لتحديد موضع العنصر الزائف */
+  background: black;
   border-radius: 10px;
-  background: 
-    linear-gradient(black, black) padding-box,
-    linear-gradient(to right, #ff00ff, #00ffff) border-box;
-  animation: gradient-rotate 3s linear infinite;
+  overflow: hidden; /* لإخفاء أجزاء العنصر الزائف التي تخرج عن الحدود */
+  color: white; /* لون النص ليكون واضحًا على الخلفية السوداء */
+  display: flex; /* لتوسيط المحتوى بسهولة */
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
 }
 
-@keyframes gradient-rotate {
-  100% { 
-    background: 
-      linear-gradient(black, black) padding-box,
-      linear-gradient(to right, #00ffff, #ff00ff) border-box;
+.con::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    #ff00ff, 
+    #00ffff, 
+    transparent 30%
+  );
+  animation: rotate 4s linear infinite;
+}
+
+.con::after {
+  content: '';
+  position: absolute;
+  inset: 4px; /* يحدد سمك الإطار */
+  background: black;
+  border-radius: 8px; /* يجب أن يكون أقل قليلاً من العنصر الأب */
+}
+
+/* يجب أن يكون المحتوى فوق العنصر الزائف */
+.con > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
   }
 }
+
 .container-skl .con h4{
     align-items: center;
     margin-top: 0;
