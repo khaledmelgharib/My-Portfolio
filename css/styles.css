@@ -4066,7 +4066,7 @@ img.u-pull-left {
 }
 .con {
   position: relative; /* ضروري لتحديد موضع العنصر الزائف */
-  background: black;
+  background: #141516;
   border-radius: 10px;
   overflow: hidden; /* لإخفاء أجزاء العنصر الزائف التي تخرج عن الحدود */
   color: white; /* لون النص ليكون واضحًا على الخلفية السوداء */
@@ -4096,7 +4096,7 @@ img.u-pull-left {
   content: '';
   position: absolute;
   inset: 4px; /* يحدد سمك الإطار */
-  background: black;
+  background: #141516;
   border-radius: 8px; /* يجب أن يكون أقل قليلاً من العنصر الأب */
 }
 
